@@ -188,7 +188,10 @@ const CreateOrderScreen = () => {
       console.log('fillTx', fillTx)
 
       // Wait for the transaction receipt
-      const fillTxReceipt = await nftSwapSdk.awaitTransactionHash(fillTx.hash)
+      const fillTxReceipt = await nftSwapSdk.awaitTransactionHash(fillTx.hash).then((res) => {
+        console.log("res" , res)
+        return res
+      })
       console.log(
         `🎉 🥳 Order filled. TxHash: ${fillTxReceipt.transactionHash}`,
       )
